@@ -1,0 +1,226 @@
+/* General styling */
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #6a5acd, #1e1e6e);
+    position: relative;
+}
+
+/* Cake container */
+.cake {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Cake layers - Now rectangular with rounded edges */
+.layer {
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, #fffefe, #fffefe);
+    box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.2),
+        0px 5px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* Stack layers properly */
+.layer:nth-child(1) {
+    width: 160px;
+    height: 40px;
+    z-index: 3;
+    margin-bottom: -10px;
+}
+
+.layer:nth-child(2) {
+    width: 180px;
+    height: 45px;
+    z-index: 2;
+    margin-bottom: -10px;
+}
+
+.layer:nth-child(3) {
+    width: 200px;
+    height: 50px;
+    z-index: 1;
+}
+
+/* Birthday message */
+.message {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: -400px;
+    /* Adjusted to make it visible */
+    left: -120%;
+    transform: translateX(50%);
+    width: 100%;
+    white-space: nowrap;
+    text-shadow: 3px 3px 10px rgba(255, 215, 0, 0.8),
+        0px 0px 15px rgba(255, 140, 0, 0.8);
+    animation: glow 1.5s infinite alternate, fadeIn 2s ease-in-out;
+}
+
+/* Candles */
+.candles {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.candle {
+    width: 10px;
+    height: 40px;
+    background: linear-gradient(to bottom, #ff0000, #aa0000);
+    border-radius: 5px;
+    position: relative;
+    box-shadow: inset 0px -2px 5px rgba(0, 0, 0, 0.3);
+    animation: wobble 1s infinite ease-in-out;
+}
+
+/* Flames */
+.flame {
+    width: 8px;
+    height: 12px;
+    background: radial-gradient(circle, orange, yellow);
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+    left: 1%;
+    transform: translateX(-50%);
+    animation: flicker 0.4s infinite alternate;
+    box-shadow: 0px 0px 8px rgba(255, 165, 0, 0.8);
+}
+
+/* Animations */
+@keyframes flicker {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+.cake {
+    animation: bounce 1s infinite ease-in-out;
+}
+
+@keyframes wobble {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+/* Fireworks */
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: gold;
+    border-radius: 50%;
+    animation: fireworks 1.5s linear infinite;
+}
+
+/* Randomized fireworks effect */
+@keyframes fireworks {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* Fireworks and Confetti Canvas */
+#fireworks,
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+/* Strawberry Cream Dripping Effect */
+.top-layer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    /* Thickness of the cream */
+    background: linear-gradient(to bottom, #ff6384, #d62e6b);
+    border-radius: 10px 10px 50% 50%;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+    z-index: -1;
+    animation: pourCream 1.5s ease-in-out forwards;
+}
+
+/* Pouring cream effect */
+@keyframes pourCream {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 20px;
+    }
+}
+
+/* Drip animation */
+@keyframes dripAnimation {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(5px);
+    }
+}
