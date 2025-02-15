@@ -47,9 +47,21 @@ document.addEventListener("DOMContentLoaded", function() {
     createConfetti();
     animateConfetti();
 
-    // Auto-Play Music (on user click)
+    // Auto-Play Music Without Click Delay
     const audio = document.getElementById("birthdaySong");
-    document.body.addEventListener("click", function() {
-        audio.play();
-    });
+
+    function playMusic() {
+        audio.play().catch(error => {
+            console.log("Autoplay blocked, waiting for user interaction:", error);
+        });
+    }
+
+    // Try playing immediately
+    playMusic();
+
+    // Ensure it plays on user interaction if needed
+    document.body.addEventListener("click", playMusic, { once: true });
+
+    // Preload the audio to reduce delay
+    audio.load();
 });
